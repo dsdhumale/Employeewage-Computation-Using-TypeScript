@@ -1,28 +1,28 @@
 console.log("Welcome in Employee Wage Computation Program....");
-var constants;
-(function (constants) {
-    constants[constants["isFULL_TIME"] = 1] = "isFULL_TIME";
-    constants[constants["isAbsent"] = 0] = "isAbsent";
-    constants[constants["wage_per_hr"] = 20] = "wage_per_hr";
-    constants[constants["isPART_TIME"] = 2] = "isPART_TIME";
-})(constants || (constants = {}));
-var empHrs;
-var NO_OF_WORKING_DAYS = 30;
-var dailyWage;
-var totalEmpWage = 0;
-for (var day = 0; day <= NO_OF_WORKING_DAYS; day++) {
-    var option = Math.floor(Math.random() * 3);
-    switch (option) {
-        case constants.isFULL_TIME:
-            empHrs = 8;
-            break;
-        case constants.isPART_TIME:
+var IS_Full_Time = 1;
+var IS_Part_Time = 2;
+var EMP_RATE_PER_HOUR = 20;
+var NO_OF_WORKING_DAYS = 20;
+var MAX_HRS_IN_MONTH = 100;
+var empHrs = 0;
+var empWage = 0;
+var totalEmployeeWage = 0;
+var totalEmpHrs = 0;
+var totalWorkingDays = 0;
+while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
+    totalWorkingDays++;
+    var empCheck = Math.floor(Math.random() * 3) + 0;
+    switch (empCheck) {
+        case IS_Part_Time:
             empHrs = 4;
+            break;
+        case IS_Full_Time:
+            empHrs = 8;
             break;
         default:
             empHrs = 0;
     }
-    dailyWage = empHrs * constants.wage_per_hr;
-    totalEmpWage = dailyWage + totalEmpWage;
+    empWage = empHrs * EMP_RATE_PER_HOUR;
+    totalEmployeeWage = empWage + totalEmployeeWage;
 }
-console.log("Total Employee wage is ", totalEmpWage);
+console.log("Total Employee Wage of Month: " + totalEmployeeWage);

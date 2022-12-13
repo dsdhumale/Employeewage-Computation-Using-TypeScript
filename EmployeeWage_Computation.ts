@@ -1,29 +1,28 @@
 console.log("Welcome in Employee Wage Computation Program....");
-
-enum constants {
-    isFULL_TIME = 1,
-    isAbsent = 0,
-    wage_per_hr = 20,
-    isPART_TIME = 2
+const IS_Full_Time: number = 1;
+const IS_Part_Time: number = 2;
+const EMP_RATE_PER_HOUR: number = 20;
+const NO_OF_WORKING_DAYS: number = 20;
+const MAX_HRS_IN_MONTH: number = 100;
+let empHrs: number = 0;
+let empWage: number = 0;
+let totalEmployeeWage: number = 0;
+let totalEmpHrs = 0;
+let totalWorkingDays = 0;
+while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
+    totalWorkingDays++;
+    var empCheck = Math.floor(Math.random() * 3) + 0;
+    switch (empCheck) {
+        case IS_Part_Time:
+            empHrs = 4;
+            break;
+        case IS_Full_Time:
+            empHrs = 8;
+            break;
+        default:
+            empHrs = 0;
+    }
+    empWage = empHrs * EMP_RATE_PER_HOUR;
+    totalEmployeeWage = empWage + totalEmployeeWage;
 }
-let empHrs;
-const NO_OF_WORKING_DAYS = 30;
-let dailyWage;
-let totalEmpWage =0;
-for (let day = 0; day <= NO_OF_WORKING_DAYS; day++) {
-let option = Math.floor(Math.random() * 3);
-switch (option) {
-    case constants.isFULL_TIME:
-        empHrs = 8;
-        break;
-    case constants.isPART_TIME:
-        empHrs = 4;
-        break;
-    default:
-        empHrs = 0;
-}
-
-dailyWage = empHrs * constants.wage_per_hr;
-totalEmpWage = dailyWage + totalEmpWage;
-}
-console.log("Total Employee wage is ", totalEmpWage );
+console.log("Total Employee Wage of Month: " + totalEmployeeWage);
