@@ -1,4 +1,17 @@
-console.log("Welcome in Employee Wage Computation Program....");
+interface displayMethod {
+    display: () => void;
+    displayResult: (result) => void;
+}
+
+class EmployeeWageComputation implements displayMethod {
+    display() {
+        console.log("Welcome in Employee Wage Computation Program....");
+    }
+    displayResult(result) {
+        console.log("Total Employee Wage of Month: ", result);
+    }
+}
+
 const IS_Full_Time: number = 1;
 const IS_Part_Time: number = 2;
 const EMP_RATE_PER_HOUR: number = 20;
@@ -9,20 +22,28 @@ let empWage: number = 0;
 let totalEmployeeWage: number = 0;
 let totalEmpHrs = 0;
 let totalWorkingDays = 0;
-while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
-    totalWorkingDays++;
-    var empCheck = Math.floor(Math.random() * 3) + 0;
-    switch (empCheck) {
-        case IS_Part_Time:
-            empHrs = 4;
-            break;
-        case IS_Full_Time:
-            empHrs = 8;
-            break;
-        default:
-            empHrs = 0;
+
+function wageCalculation() {
+    while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
+        totalWorkingDays++;
+        var empCheck = Math.floor(Math.random() * 3) + 0;
+        switch (empCheck) {
+            case IS_Part_Time:
+                empHrs = 4;
+                break;
+            case IS_Full_Time:
+                empHrs = 8;
+                break;
+            default:
+                empHrs = 0;
+        }
+        empWage = empHrs * EMP_RATE_PER_HOUR;
+        totalEmployeeWage = empWage + totalEmployeeWage;
     }
-    empWage = empHrs * EMP_RATE_PER_HOUR;
-    totalEmployeeWage = empWage + totalEmployeeWage;
+    return totalEmployeeWage;
 }
-console.log("Total Employee Wage of Month: " + totalEmployeeWage);
+
+let obj = new EmployeeWageComputation();
+obj.display();
+let result = wageCalculation();
+obj.displayResult(result);

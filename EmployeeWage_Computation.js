@@ -1,4 +1,14 @@
-console.log("Welcome in Employee Wage Computation Program....");
+var EmployeeWageComputation = /** @class */ (function () {
+    function EmployeeWageComputation() {
+    }
+    EmployeeWageComputation.prototype.display = function () {
+        console.log("Welcome in Employee Wage Computation Program....");
+    };
+    EmployeeWageComputation.prototype.displayResult = function (result) {
+        console.log("Total Employee Wage of Month: ", result);
+    };
+    return EmployeeWageComputation;
+}());
 var IS_Full_Time = 1;
 var IS_Part_Time = 2;
 var EMP_RATE_PER_HOUR = 20;
@@ -9,20 +19,26 @@ var empWage = 0;
 var totalEmployeeWage = 0;
 var totalEmpHrs = 0;
 var totalWorkingDays = 0;
-while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
-    totalWorkingDays++;
-    var empCheck = Math.floor(Math.random() * 3) + 0;
-    switch (empCheck) {
-        case IS_Part_Time:
-            empHrs = 4;
-            break;
-        case IS_Full_Time:
-            empHrs = 8;
-            break;
-        default:
-            empHrs = 0;
+function wageCalculation() {
+    while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS) {
+        totalWorkingDays++;
+        var empCheck = Math.floor(Math.random() * 3) + 0;
+        switch (empCheck) {
+            case IS_Part_Time:
+                empHrs = 4;
+                break;
+            case IS_Full_Time:
+                empHrs = 8;
+                break;
+            default:
+                empHrs = 0;
+        }
+        empWage = empHrs * EMP_RATE_PER_HOUR;
+        totalEmployeeWage = empWage + totalEmployeeWage;
     }
-    empWage = empHrs * EMP_RATE_PER_HOUR;
-    totalEmployeeWage = empWage + totalEmployeeWage;
+    return totalEmployeeWage;
 }
-console.log("Total Employee Wage of Month: " + totalEmployeeWage);
+var obj = new EmployeeWageComputation();
+obj.display();
+var result = wageCalculation();
+obj.displayResult(result);
