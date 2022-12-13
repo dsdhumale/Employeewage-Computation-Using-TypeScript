@@ -7,6 +7,10 @@ enum constants {
     isPART_TIME = 2
 }
 let empHrs;
+const NO_OF_WORKING_DAYS = 30;
+let dailyWage;
+let totalEmpWage =0;
+for (let day = 0; day <= NO_OF_WORKING_DAYS; day++) {
 let option = Math.floor(Math.random() * 3);
 switch (option) {
     case constants.isFULL_TIME:
@@ -19,5 +23,7 @@ switch (option) {
         empHrs = 0;
 }
 
-let dailyWage = empHrs * constants.wage_per_hr;
-console.log("Employee wage is ", dailyWage);
+dailyWage = empHrs * constants.wage_per_hr;
+totalEmpWage = dailyWage + totalEmpWage;
+}
+console.log("Total Employee wage is ", totalEmpWage );

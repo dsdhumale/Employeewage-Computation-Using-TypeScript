@@ -7,16 +7,22 @@ var constants;
     constants[constants["isPART_TIME"] = 2] = "isPART_TIME";
 })(constants || (constants = {}));
 var empHrs;
-var option = Math.floor(Math.random() * 3);
-switch (option) {
-    case constants.isFULL_TIME:
-        empHrs = 8;
-        break;
-    case constants.isPART_TIME:
-        empHrs = 4;
-        break;
-    default:
-        empHrs = 0;
+var NO_OF_WORKING_DAYS = 30;
+var dailyWage;
+var totalEmpWage = 0;
+for (var day = 0; day <= NO_OF_WORKING_DAYS; day++) {
+    var option = Math.floor(Math.random() * 3);
+    switch (option) {
+        case constants.isFULL_TIME:
+            empHrs = 8;
+            break;
+        case constants.isPART_TIME:
+            empHrs = 4;
+            break;
+        default:
+            empHrs = 0;
+    }
+    dailyWage = empHrs * constants.wage_per_hr;
+    totalEmpWage = dailyWage + totalEmpWage;
 }
-var dailyWage = empHrs * constants.wage_per_hr;
-console.log("Employee wage is ", dailyWage);
+console.log("Total Employee wage is ", totalEmpWage);
