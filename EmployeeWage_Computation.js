@@ -8,17 +8,15 @@ var constants;
 })(constants || (constants = {}));
 var empHrs;
 var option = Math.floor(Math.random() * 3);
-if (option == constants.isFULL_TIME) {
-    console.log("Employee is present");
-    empHrs = 8;
-}
-else if (option == constants.isPART_TIME) {
-    console.log("Employee is working as Part Time Employee");
-    empHrs = 4;
-}
-else {
-    console.log("Employee is absent");
-    empHrs = 0;
+switch (option) {
+    case constants.isFULL_TIME:
+        empHrs = 8;
+        break;
+    case constants.isPART_TIME:
+        empHrs = 4;
+        break;
+    default:
+        empHrs = 0;
 }
 var dailyWage = empHrs * constants.wage_per_hr;
 console.log("Employee wage is ", dailyWage);

@@ -8,17 +8,16 @@ enum constants {
 }
 let empHrs;
 let option = Math.floor(Math.random() * 3);
-if (option == constants.isFULL_TIME) {
-    console.log("Employee is present");
-    empHrs = 8;
+switch (option) {
+    case constants.isFULL_TIME:
+        empHrs = 8;
+        break;
+    case constants.isPART_TIME:
+        empHrs = 4;
+        break;
+    default:
+        empHrs = 0;
 }
-else if(option == constants.isPART_TIME){
-    console.log("Employee is working as Part Time Employee");
-    empHrs = 4;
-}
-else {
-    console.log("Employee is absent");
-    empHrs = 0;
-}
+
 let dailyWage = empHrs * constants.wage_per_hr;
 console.log("Employee wage is ", dailyWage);
